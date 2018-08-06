@@ -1,0 +1,18 @@
+﻿
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4>User List</h4>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-hover col-sm-6 col-lg-6 col-md-6 ">
+            @foreach (var user in ViewBag.Users)
+            {
+            <tr>
+                <td class="col-sm-1 col-lg-5 col-md-5">
+                    <strong>@user.Text </strong>
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+</div> 

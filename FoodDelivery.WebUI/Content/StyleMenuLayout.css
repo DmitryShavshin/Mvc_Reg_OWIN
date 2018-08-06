@@ -1,0 +1,57 @@
+﻿.description {
+    height: 10vh;
+    text-transform: uppercase;
+    font: 17px "Lato", sans-serif;
+    color: #777;
+    text-align: justify;
+    text-align: center;
+    background-color: rgb(255, 216, 0);
+    padding: 20px;
+}
+
+.bg-img-one {
+    background-image: url(../../Content/Images/Sandwich2.jpg);
+    height: 85vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-img-two {
+    background-image: url(../../Content/Images/Burger.jpg);
+    height: 90vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-img-three {
+    background-image: url(../../Content/Images/Ribs.jpg);
+    height: 90vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-img-four {
+    background-image: url(../../Content/Images/Salads.jpg);
+    height: 90vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-img-five {
+    background-image: url(../../Content/Images/Seafood.jpg);
+    height: 90vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+

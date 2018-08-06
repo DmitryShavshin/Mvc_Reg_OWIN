@@ -1,0 +1,98 @@
+﻿@using Microsoft.AspNet.Identity
+
+<style type="text/css">
+    .register-link {
+        color: #000;
+        font-family: sans-serif;
+        font-weight: bold;
+    }
+
+        .register-link:hover, .register-link:active {
+            color: #ff6a00;
+            text-decoration: none;
+        }
+
+    .login-link {
+        color: #000;
+        font-family: sans-serif;
+        font-weight: bold;
+    }
+
+        .login-link:hover, .login-link:active {
+            color: #ff6a00;
+            text-decoration: none;
+        }
+
+    hr {
+        margin: 0;
+        padding: 3px;
+        color: #000;
+    }
+
+    h5 {
+        color: #000;
+        padding-bottom: 3px;
+        margin: 0;
+        font-family: sans-serif;
+        font-weight: bold;
+    }
+
+    .modal-footer {
+        padding-top: 110px;
+    }
+
+    p {
+        color: #000;
+    }
+
+    .modal-header {
+        padding-top: 50px;
+    }
+
+    .manage-account {
+        color: #000;
+        font-family: sans-serif;
+        font-size: 11px;
+    }
+</style>
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-header text-left">
+            <h5>Hello !!!</h5>
+        </div>
+        <div class="modal-body text-left">
+            <span class="manage-account">Manage account:</span><br />
+            @Html.ActionLink( User.Identity.GetUserName(), "Index", "Manage", routeValues: null,
+                htmlAttributes: new { title = "Manage", @class = "register-link" })<br />
+            <hr />
+        </div>
+        <div class="modal-footer">
+            <a class="login-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        </div>
+    }
+}
+else
+{
+    <div class="modal-header">
+        <h5>You are not yet registered</h5>
+    </div>
+    <div class="modal-body text-left">
+        <p>
+            To register click here:
+            @Html.ActionLink(" Register", "Register", "Account", routeValues: null,
+                    htmlAttributes: new { id = "registerLink", @class = "register-link" })
+        </p>
+        <hr />
+        <p>
+            If you have an account, please
+            @Html.ActionLink(" Log in", "Login", "Account", routeValues: null,
+                    htmlAttributes: new { id = "loginLink", @class = "login-link" })
+        </p>
+        <hr />
+    </div>
+}

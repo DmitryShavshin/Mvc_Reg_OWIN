@@ -1,0 +1,52 @@
+﻿@model FoodDelivery.Web.UI.Models.ProductsListView
+<style type="text/css">
+    h1 {
+        color: #4800ff;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+<div class="title">
+    <div class="description">
+        @Html.RouteLink("Sandwiches", new {
+        controller = "Product",
+        action = "Products",
+        category = "Sandwiches",
+        page = 1 }, new { @class = "link-to-categories" })
+    </div>
+    <div class="bg-img-one"></div>
+    <div class="description">
+        @Html.RouteLink("Burgers", new {
+        controller = "Product",
+        action = "Products",
+        category = "Burgers",
+        page = 1 }, new { @class = "link-to-categories" })
+    </div>
+    <div class="bg-img-two"></div>
+    <div class="description">
+        @Html.RouteLink("Ribs & Steaks", new {
+        controller = "Product",
+        action = "Products",
+        category = "Ribs & Steaks",
+        page = 1 }, new { @class = "link-to-categories" })
+    </div>
+    <div class="bg-img-three"></div>
+    <div class="description">
+        @Html.RouteLink("Salads", new {
+        controller = "Product",
+        action = "Products",
+        category = "Salads",
+        page = 1 }, new { @class = "link-to-categories" })
+    </div>
+    <div class="bg-img-four"></div>
+    <div class="description">
+        @Html.RouteLink("Seafood", new {
+        controller = "Product",
+        action = "Products",
+        category = "Seafood",
+        page = 1 }, new { @class = "link-to-categories" })
+    </div>
+    <div class="bg-img-five"></div>
+</div>
+
+

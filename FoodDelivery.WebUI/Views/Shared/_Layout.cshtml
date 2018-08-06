@@ -1,0 +1,134 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+    <link href="~/Content/LayoutStyles.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Media.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/StyleMenuLayout.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="~/Scripts/MenuSummaryScripts.js" />
+    <link href="~/Content/ForgotPasswordStyles.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Scripts/typed.min.js" />*@
+
+
+
+
+
+    <script>
+        $(function () {
+            $(".show-menu").click(function () {
+                $("#modal-menu").toggle(1000);
+            });
+
+            $(".user-infornation").click(function () {
+                $("#modal-user-info").toggle(1500);
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        .user-infornation {
+            color: #fff;
+            margin-right: 20px;
+            margin-top: 8px;
+            margin-left: 17px;
+        }
+
+        #modal-user-info {
+            width: 250px;
+            height: 300px;
+            display: none;
+            background-color: #fff;
+            position: absolute;
+            top: 35px;
+            right: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 50px rgb(0,0,0);
+        }
+
+        .link {
+            color: #fff;
+        }
+
+        .home-link {
+            color: #000;
+        }
+
+        .product-conteiner {
+            min-width: 250px;
+            min-height: 500px;
+            padding: 5px;
+            background-color: rgba(255, 216, 0, 0.30);
+            margin: 10px;
+            float: left;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgb(0, 0, 0);
+        }
+
+        .btn-group {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle show-menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Delivery Food", "List", "Product",
+                        new { area = "" }, new { @class = "navbar-brand" })
+                <div class="pull-right visible-xs">
+                    <a href=@Url.Action("Index", "Cart",
+                            new { returnUrl = Request.Url.PathAndQuery })
+                       class="btn btn-success navbar-btn navbar-right">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <div class="user-infornation navbar-right btn">
+                    About me
+                    <div class="navbar-right" id="modal-user-info">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+                <div class="hidden-xs">
+                    <p class="btn link navbar-right navbar-btn show-menu">Menu</p>
+                    @Html.Action("Summary", "Cart")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title" id="modal-menu">
+        @Html.Action("Menu", "Nav")
+    </div>
+    <div class="title">
+        @RenderBody()
+    </div>
+    <footer>
+      
+    </footer>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

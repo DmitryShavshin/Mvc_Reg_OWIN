@@ -1,0 +1,20 @@
+﻿@model FoodDelivery.Web.UI.Models.ProductsListView
+@using FoodDelivery.Web.UI.HtmlHelpes;
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    @foreach (var p in Model.Products)
+    {
+        @Html.Partial("ProductsSummary", p)
+    }
+    <div class="btn-group text-right">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Products",
+              new { page = x, category = Model.CurrentCategory }))
+    </div>
+</div>
+
+

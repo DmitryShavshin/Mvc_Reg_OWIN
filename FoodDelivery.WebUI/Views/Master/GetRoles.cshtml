@@ -1,0 +1,28 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4>List Roles for a User</h4>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("GetRoles", "Master"))
+        {
+        @Html.AntiForgeryToken()
+        <p>
+            User Name: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
+            <input type="submit" value="Get Roles for this User" class="btn-primary" />
+        </p>
+        }
+
+        @if (ViewBag.RolesForThisUser != null)
+        {
+        <div class="alert-info">
+            <strong>Roles for this user </strong>
+            <ol>
+                @foreach (string s in ViewBag.RolesForThisUser)
+                {
+                    <li>@s</li>
+                }
+            </ol>
+        </div>
+        }
+    </div>
+</div>

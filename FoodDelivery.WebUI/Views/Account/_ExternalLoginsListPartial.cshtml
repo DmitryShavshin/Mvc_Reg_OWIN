@@ -1,0 +1,80 @@
+﻿@model FoodDelivery.WebUI.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+<style type="text/css">
+    .btn-social {
+        font-size: 0px;
+        background-color: #f00;
+        color: #fff;
+        border-radius: 50px;
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 5px rgb(0, 0, 0);
+        transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+    }
+    .fa-google-plus {
+        font-size: 17px;
+        color: #fff;
+    }
+    .btn-social:hover {
+        width: 100%;
+        border-radius: 50px;
+        color: #fff;
+        background: #f00;
+        box-shadow: 0 0 10px rgb(0, 0, 0);
+    }
+    .btn-social:before {
+        font-size: 15px;
+        content: 'Google';
+        display: block;
+        position: absolute;
+        left: -130%;
+        top: 14px;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+        -moz-transition: all 1s;
+    }
+    .btn-social:hover:before {
+        left: 18%;
+    }
+    .btn-social:hover .fa-google-plus {
+        font-size: 17px;
+        left: 30%;
+        position: relative;
+    }
+    #social {
+        width: 130px;
+    }
+</style>
+
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support logging in via external services.
+            </p>
+        </div>
+    }
+    else {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p id="social">
+                    @foreach (AuthenticationDescription p in loginProviders) {
+                        <button type="submit" class="btn btn-social " id="@p.AuthenticationType" 
+                                name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType
+                                    <i class="fa fa-google-plus"></i>
+                        </button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}

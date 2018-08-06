@@ -1,0 +1,17 @@
+﻿@model IEnumerable<string>
+
+@foreach (var link in Model)
+{
+    @Html.HiddenFor(p => link);
+    @Html.RouteLink(link, new
+    {
+        controller = "Product",
+        action = "Products",
+        category = link,
+        page = 1
+    }, new
+    {
+        @class = "btn btn-block btn-default btn-lg"
+             + (link == ViewBag.SelectCategory ? " btn-success" : "")
+    })
+}

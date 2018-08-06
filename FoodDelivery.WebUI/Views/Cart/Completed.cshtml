@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Food Delivery: Order Submitted";
+}
+
+
+@*<script>
+    swal({
+        title: "Thanks for placing your order.",
+        text: "We'll ship your goods as soon as possible.",
+        icon: "success",
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+        button: "Ok"
+    });
+</script>*@
+
+
+<style type="text/css">
+
+    .fixed-overlay {
+        position: fixed;
+        overflow: auto;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        width: 600px;
+        left: 30%;
+        top: 30%;
+    }
+    .modal-footer {
+        padding-top: 15px;
+    }
+    img{
+        width: 128px;
+        height: 128px;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+<div class="wrapper">
+    <div class="container">
+        <div class="fixed-overlay">
+            <div class="modal-content">
+                <div class="modal-header text-center">               
+                    <img src="~/Content/Images/checkmark.png" />
+                </div>
+                <div class="modal-body">
+                    <h1 class="text-center">Thank you for Your order</h1>
+                </div>
+                <div class="modal-footer">
+                    @Html.ActionLink("Go to home page", "List", "Product",
+                                        null, new { @class= "btn btn-success" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
